@@ -9,7 +9,7 @@ async function createTool(req, res) {
             description, 
             tags
         })    
-        return res.json(tool) 
+        return res.status(201).json(tool) 
     } catch (error) {
         res.status(400).send('An error ocurred. Try again ' + error)
     }       

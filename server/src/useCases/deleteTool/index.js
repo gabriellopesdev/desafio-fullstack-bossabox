@@ -8,7 +8,7 @@ async function deleteTool(req, res) {
             return res.status(204).send('Id not found')
         }    
         await tool.remove()  
-        return res.send()    
+        return res.status(204).send()    
     } catch (error) {
         return res.status(400).send('An error ocurred. Try again ' + error)
     }    
