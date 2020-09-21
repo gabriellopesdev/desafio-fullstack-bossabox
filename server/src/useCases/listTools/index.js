@@ -5,8 +5,8 @@ async function listTool(req, res) {
         const { tags } = req.query
         
         const tool = tags ? 
-                    await Tool.find( { 'tags': tags } ) : 
-                    await Tool.find()
+                     await Tool.find( { 'tags': tags } ) : 
+                     await Tool.find()
              
         return res.json(tool)    
     } catch (error) {

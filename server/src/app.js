@@ -1,9 +1,11 @@
 require('dotenv').config()
 
 const express = require('express')
+const swaggerUi = require('swagger-ui-express');
 const cors = require('cors')
 const routes = require('./routes')
 const Connection = require('./config/database')
+const specs = require('./config/doc')
 
 class AppController {
 
@@ -17,6 +19,7 @@ class AppController {
   middlewares() {
     this.express.use(express.json())
     this.express.use(cors())
+    this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));    
   }
 
   routes() {
