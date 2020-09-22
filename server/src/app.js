@@ -19,7 +19,8 @@ class AppController {
   middlewares() {
     this.express.use(express.json())
     this.express.use(cors())
-    this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));    
+    this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));  
+    console.log(specs)  
   }
 
   routes() {

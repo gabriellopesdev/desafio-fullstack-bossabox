@@ -13,6 +13,9 @@ const options = {
           url: 'https://github.com/gabriellopesdev'
         },
       },
+      securityDefinitions: {      
+          ApiKeyAuth: { type: "apiKey", in: "header", name: "x-access-token" }, 
+      },       
       host: process.env.APP_URL || 'localhost:3000',       
       tags: [{
           name: 'User',
@@ -43,10 +46,46 @@ const options = {
               }    
             }  
           }          
+        },
+        user: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string'
+            },
+            login: {
+              type: 'string'    
+            }, 
+            password: {
+              type: 'string'    
+            }
+          }          
+        },
+        authBody: {
+          type: 'object',
+          properties: {
+            login: {
+              type: 'string'    
+            }, 
+            pwd: {
+              type: 'string'    
+            }
+          } 
+        },
+        authResponse: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string'    
+            }, 
+            token: {
+              type: 'string'    
+            }
+          } 
         }
       }   
     },    
     apis: [ path.resolve( __dirname, '..', '..', 'routes.js') ],     
   }
-
+  
 module.exports = swaggerJsdoc(options)
