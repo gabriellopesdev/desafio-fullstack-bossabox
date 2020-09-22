@@ -14,7 +14,12 @@ const options = {
         },
       },
       securityDefinitions: {      
-          ApiKeyAuth: { type: "apiKey", in: "header", name: "x-access-token" }, 
+          ApiKeyAuth: { 
+            description: "Token JWT expira após 1 minuto",
+            type: "apiKey",
+            in: "header", 
+            name: "x-access-token" 
+          }, 
       },       
       host: process.env.APP_URL || 'localhost:3000',       
       tags: [{
