@@ -30,7 +30,7 @@ const options = {
           name: 'Tool',
           description: 'Operações de manipulação dos registros de ferramentas'
         }],
-      schemes:[ 'http', 'https'],  
+      schemes:[ 'https', 'http'],  
       definitions: {
         tool: {
           type: 'object',
