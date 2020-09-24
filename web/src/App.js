@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import Header from './components/header'
 
 function App() {
   return (
     <div>
-      <h1>Empty project</h1>
+      <Header />
     </div>
   );
 }
