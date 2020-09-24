@@ -4,7 +4,7 @@ class Auth {
 
     GetToken(value) {               
         const token = jwt.sign( { id: value }, String(process.env.SECRET), {
-            expiresIn: 60
+            expiresIn: 600
         })
         return token
     }    

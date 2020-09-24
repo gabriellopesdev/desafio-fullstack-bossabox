@@ -15,7 +15,7 @@ const options = {
       },
       securityDefinitions: {      
           ApiKeyAuth: { 
-            description: "Token JWT expira após 1 minuto",
+            description: "Token JWT expira após 10 minutos",
             type: "apiKey",
             in: "header", 
             name: "x-access-token" 
