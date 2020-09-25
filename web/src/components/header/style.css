@@ -60,6 +60,7 @@ header  {
 
 .addButton:hover {
     background-color: #2F55CC;   
+    cursor: pointer;
 }
 
 .addButton:active {

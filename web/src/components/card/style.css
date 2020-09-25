@@ -1,0 +1,58 @@
+.card {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 7px #0000000D;
+    border: 1px solid #EBEAED;
+    border-radius: 5px;
+    max-width: 60vw;
+    opacity: 1;
+    padding: 10px;
+    width: 100%;
+
+}
+
+.titleArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.removeButton {
+    color: #F95E5A;
+    border-radius: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    font: normal normal 600 14px Source Sans Pro;
+    height: 30px;
+    letter-spacing: 0.36px;
+    transition: color .3s;
+    text-align: center;
+    width: 100px;
+}
+
+.removeButton:hover {
+    color: #CC4C4C;   
+    cursor: pointer;
+}
+
+.removeButton:active {
+    color: #A53F3F;   
+}
+
+.title {
+    color: #365DF0;
+}
+
+.text {
+    color: #170C3A;
+    font: normal normal normal 14px Source Sans Pro;
+    letter-spacing: 0.4px;
+}
+
+.tags {
+    color: #170C3A;
+    font: normal normal normal 12px Source Sans Pro;
+    letter-spacing: 0.4px;
+}
+
+.description {
+    margin: 5px 0;
+}
