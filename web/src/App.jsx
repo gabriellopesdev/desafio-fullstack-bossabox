@@ -21,34 +21,36 @@ function App() {
       .then((response) => {
         setToolsList(response.data)
       })
-    })
-    
+    })    
   }
 
   useEffect( () => {    
     load()
   }, [])
 
-  /*
-  */
   return (
     <div>
       <Header />
-     
-      { toolsList.map(({ id, title, link, description, tags }) => {
-          const formatedTags = Array(tags).map((item) => {            
-            return item + ', '
-          }) 
-         
-          return (
-            <Card 
-              key={ id }
-              title={ title }
-              link={ link }
-              description={ description } 
-              relatedTags={ formatedTags } />
-          )
-        })} 
+      <div>
+      { toolsList.map(({ _id, title, link, description, tags }, index) => {           
+            
+            const arrayTags = String(tags).split(',')
+            const formatedtags = arrayTags.map((item) => {
+              return '#' + item + ' '
+            }) 
+            return (              
+             <Card 
+                key={ index }
+                id={ _id }
+                title={ title }
+                link={ link }
+                description={ description } 
+                relatedTags={ formatedtags }>
+              </Card>
+            )
+          })} 
+      </div>
+      
       
     </div>
   );
