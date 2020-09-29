@@ -2,26 +2,22 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/header'
 import Card from './components/card'
 import api from './services/api'
-
+import  { getNewToken } from './services/token'
 function App() {
-  const [toolsList, setToolsList] = useState([{}])
 
+  const [toolsList, setToolsList] = useState([{}])
   function load() {    
-    api.post('auth', {      
-      login: 'gabs',
-      pwd: '1234'        
+    getNewToken(process.env.REACT_APP_DEFAULT_USER, process.env.REACT_APP_DEFAULT_PWD)
+    .then((token) => {
+        api.get('tool', {
+          headers: {
+            'x-access-token': token
+          }
+        })
+        .then((response) => {
+          setToolsList(response.data)
+        })  
     })
-    .then((response) => {
-      localStorage.setItem('@vuttr-app/token', response.data.token)
-      api.get('tool', {
-        headers: {
-          'x-access-token': localStorage.getItem('@vuttr-app/token')
-        }
-      })
-      .then((response) => {
-        setToolsList(response.data)
-      })
-    })    
   }
 
   useEffect( () => {    
@@ -31,7 +27,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div>
+      
       { toolsList.map(({ _id, title, link, description, tags }, index) => {           
             
             const arrayTags = String(tags).split(',')
@@ -48,10 +44,7 @@ function App() {
                 relatedTags={ formatedtags }>
               </Card>
             )
-          })} 
-      </div>
-      
-      
+          })}  
     </div>
   );
 }
