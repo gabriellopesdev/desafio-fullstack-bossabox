@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/header'
 import Card from './components/card'
-import api from './services/api'
+import { listTools } from './services/tools'
 import  { getNewToken } from './services/token'
+import { ToolsProvider } from './components/context'
 function App() {
 
   const [toolsList, setToolsList] = useState([{}])
+
+  const initialContext = {
+    data: toolsList,
+    updateData: (newData) => {      
+      const newArray = newData.map((item) => {
+        return item
+      })
+      setToolsList(newArray)
+    }
+  }
+
   function load() {    
     getNewToken(process.env.REACT_APP_DEFAULT_USER, process.env.REACT_APP_DEFAULT_PWD)
-    .then((token) => {
-        api.get('tool', {
-          headers: {
-            'x-access-token': token
-          }
-        })
-        .then((response) => {
-          setToolsList(response.data)
-        })  
-    })
+    listTools().then((list) => {      
+      setToolsList(list)
+    })       
   }
 
   useEffect( () => {    
@@ -26,9 +31,10 @@ function App() {
 
   return (
     <div>
-      <Header />
-      
-      { toolsList.map(({ _id, title, link, description, tags }, index) => {           
+      <ToolsProvider value={ initialContext }>
+        <Header />
+        
+        { toolsList.map(({ _id, title, link, description, tags }, index) => {          
             
             const arrayTags = String(tags).split(',')
             const formatedtags = arrayTags.map((item) => {
@@ -44,7 +50,8 @@ function App() {
                 relatedTags={ formatedtags }>
               </Card>
             )
-          })}  
+          }) }  
+        </ToolsProvider>
     </div>
   );
 }
