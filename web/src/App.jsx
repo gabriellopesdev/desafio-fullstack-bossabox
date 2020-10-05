@@ -7,9 +7,17 @@ import { ToolsProvider } from './components/context'
 function App() {
 
   const [toolsList, setToolsList] = useState([{}])
+  const [originalToolsList, setOriginalToolsList] = useState([{}])
 
   const initialContext = {
     data: toolsList,
+    originalToolsList: originalToolsList,
+    reloadContent: () => {
+      listTools().then((list) => {      
+        setToolsList(list)
+        setOriginalToolsList(list)
+      })    
+    },
     updateData: (newData) => {      
       const newArray = newData.map((item) => {
         return item
@@ -22,6 +30,7 @@ function App() {
     getNewToken(process.env.REACT_APP_DEFAULT_USER, process.env.REACT_APP_DEFAULT_PWD)
     listTools().then((list) => {      
       setToolsList(list)
+      setOriginalToolsList(list)
     })       
   }
 
@@ -30,7 +39,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div id="main">
       <ToolsProvider value={ initialContext }>
         <Header />
         

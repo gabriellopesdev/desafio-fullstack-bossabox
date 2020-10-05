@@ -1,8 +1,15 @@
 import api from '../api'
 import { getToken } from '../token'
 
-function addTool(tool) {
+async function addTool(tool) {
+  const response = await api.post('tool', tool, {    
+    headers: {
+      'x-access-token': getToken()
+    },  
 
+  })
+  
+  return response.data
 }
 
 async function searchTool(content, onlyTags) {

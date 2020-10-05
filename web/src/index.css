@@ -19,6 +19,13 @@ h4 {
   color: #170C3A;
 }
 
+h5 {
+  text-align: left;
+  font: normal normal 600 20px/28px Source Sans Pro;
+  letter-spacing: 0.52px;
+  color: #170C3A;
+}
+
 html, body, #root {
   height: 100vh;
 }

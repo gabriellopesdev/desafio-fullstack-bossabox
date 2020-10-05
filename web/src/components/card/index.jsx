@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import  ToolsContext from '../context'
+import  { ToolsContext } from '../context'
 
 import './style.css'
 
