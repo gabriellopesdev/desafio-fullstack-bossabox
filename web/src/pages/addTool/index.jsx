@@ -52,7 +52,7 @@ function NewToolModal(props) {
         <Modal
           isOpen={ props.visible }          
           onRequestClose={ closeModal }
-          contentLabel="Example Modal"
+          contentLabel=""
           style={ customStyles }
           ariaHideApp={ false }
         >
