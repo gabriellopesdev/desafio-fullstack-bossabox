@@ -32,6 +32,7 @@ function Login() {
             <form className="loginForm" onSubmit={(e) => e.preventDefault()}>
                 <input 
                     type="text" 
+                    className="input"
                     placeholder="Login"                    
                     onChange={(e)=> {
                         setUserLogin(e.currentTarget.value)
@@ -39,6 +40,7 @@ function Login() {
                 />
                 <input 
                     type="password" 
+                    className="input"
                     placeholder="Password"                   
                     onChange={(e)=> {
                         setUserPassword(e.currentTarget.value)

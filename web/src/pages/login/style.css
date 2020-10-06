@@ -39,3 +39,20 @@
 .signInButton:active {
     background-color: #244AA8;   
 }
+
+
+.input {
+    background: #F5F4F6;
+    border: 1px solid #EBEAED;
+    border-radius: 5px;
+    color: #B1ADB9;
+    font: normal normal normal 14px Source Sans Pro;
+    height: 30px;
+    letter-spacing: 0.4px;
+    padding: 5px;
+    text-align: left;
+}
+
+.input:focus {
+    outline: none;
+}
