@@ -33,11 +33,12 @@ function Header() {
             return
         }
         const filteredData = 
-        onlyTags ?
+        onlyTags ?        
         originalToolsList.filter((item) => {
             if (String(item.tags).indexOf(searchContent) > -1) {                
                 return item                
             }
+            else return null
         })
         :
         originalToolsList.filter((item) => {
@@ -47,6 +48,7 @@ function Header() {
             (String(item.tags).indexOf(searchContent) > -1)) {
                 return item
             }
+            else return null
         })                
         updateData(filteredData)
     }
