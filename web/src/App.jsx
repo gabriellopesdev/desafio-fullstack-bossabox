@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/header'
 import Card from './components/card'
 import { listTools } from './services/tools'
-import  { getNewToken } from './services/token'
+import  { getToken } from './services/token'
 import { ToolsProvider } from './components/context'
+import { Redirect } from "react-router-dom";
+
 function App() {
 
   const [toolsList, setToolsList] = useState([{}])
@@ -27,7 +29,8 @@ function App() {
   }
 
   function load() {    
-    getNewToken(process.env.REACT_APP_DEFAULT_USER, process.env.REACT_APP_DEFAULT_PWD)
+    //getNewToken(process.env.REACT_APP_DEFAULT_USER, process.env.REACT_APP_DEFAULT_PWD)
+    if (!getToken()) return
     listTools().then((list) => {      
       setToolsList(list)
       setOriginalToolsList(list)
@@ -37,6 +40,10 @@ function App() {
   useEffect( () => {    
     load()
   }, [])
+
+  if (!getToken()) {
+    return <Redirect to="/" />
+  }
 
   return (
     <div id="main">
